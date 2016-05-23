@@ -196,6 +196,6 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
         mysql_close($con);
     } 
 ?>
-
+<p><a href='login-home.php'>Back</a></p>
 <p><a href='logout.php'>Logout</a></p>
 

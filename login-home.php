@@ -27,6 +27,9 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
 <li><p><a href='change-pwd.php'>Change password</a></p></li>
 <HR WIDTH="100%" COLOR="#6699FF" SIZE="6">
 <li><a href='WOE.php' style="color:blue"> Input Warehouse Contract Manufacture Order</a></li>
+<li><a href='Search_by_Model.php' style="color:blue"> Search Warehouse Contract Manufacture Order by Model</a></li>
+<li><a href='Search_by_Date.php' style="color:blue"> Search Warehouse Contract Manufacture Order by Date</a></li>
+<li><a href='delete_wo.php' style="color:blue"> Delete Warehouse Contract Manufacture Order</a></li>
 <br><br><br>
 <p><a href='logout.php'>Logout</a></p>
 </div>
