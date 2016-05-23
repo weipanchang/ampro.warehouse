@@ -33,7 +33,7 @@ Ampro Warehouse Contract Manufacture Order Search by Model Page
     require_once("connMysql.php");
     $con=mysql_connect($db_host,$db_username,$db_password) or die(mysql_error());
     mysql_select_db($db_name);
-    $sql = "SELECT `model` FROM `Contract_Manufacturer_Work_Order` order by `model`";
+    $sql = "SELECT `model` FROM `Contract_Manufacturer_Work_Order` group by `model` order by `model`";
     $result=mysql_query($sql);
     echo "<select name='model' size=8>";
     while ($row= mysql_fetch_array($result) ) {
@@ -78,7 +78,7 @@ if (isset($_POST['submit3']))
     $con=mysql_connect($db_host,$db_username,$db_password) or die(mysql_error());
     mysql_select_db("$db_name") or die(mysql_error());
     
-    $sql = "SELECT * FROM `Contract_Manufacturer_Work_Order` WHERE `model` = '$model'";
+    $sql = "SELECT * FROM `Contract_Manufacturer_Work_Order` WHERE `model` = '$model' group by `model`";
     $result=mysql_query($sql, $con);
     while($row=mysql_fetch_array($result))  {
     echo "<tr style='font-weight: bold;'>"; 

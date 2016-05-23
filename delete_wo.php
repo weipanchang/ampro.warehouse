@@ -54,34 +54,51 @@ Warning: This page is only to allow Ampro Management to access.<br>
     $result=mysql_query($sql, $con) or die(mysql_error());
     
     mysql_close($con);
-    //header('Location:Ampro_model_menu.php');
+    header('Location:delete_wo.php');
     }
-    echo "<table width='600' border='5'; style='border-collapse: collapse;border-color: silver;'>";  
+    echo "<table width='1000' border='5'; style='border-collapse: collapse;border-color: silver;'>";  
     echo "<tr style='font-weight: bold;'>";  
-    echo "<td width='20%' align='center'>Rec Number</td><td width='50%' align='center'>Model Name</td>";
-    echo "<td width='10%' align='center'>revision</td></tr>";  
-    
+    echo "<td width='10%' align='center'>Rec</td>";
+    echo "<td width='10%' align='center'>Model</td>";  
+    echo "<td width='10%' align='center'>Line</td>";
+    echo "<td width='10%' align='center'>PO</td>";
+    echo "<td width='10%' align='center'>WO</td>";
+    echo "<td width='10%' align='center'>BOM</td>";
+    echo "<td width='10%' align='center'>Start</td>";
+    echo "<td width='10%' align='center'>&nbspEnd&nbsp</td>";
+    echo "<td width='8%' align='center'>&nbspQty&nbsp</td>";
+    echo "<td width='10%' align='center'>Operator</td>";
+    echo "<td width='10%' align='center'>Date</td>";
+    echo "</tr>";
     $con=mysql_connect($db_host,$db_username,$db_password) or die(mysql_error());
     mysql_select_db("$db_name") or die(mysql_error());
     
-    $sql = "SELECT * FROM `PCB_Model` order by model";
+    $sql = "SELECT * FROM `Contract_Manufacturer_Work_Order`";
     $result=mysql_query($sql, $con);
     while($row=mysql_fetch_array($result))  {
     echo "<tr style='font-weight: bold;'>"; 
     echo "<tr>";  
-    echo "<td align='center' width='20%'>" . $row['recnumber'] . "</td>";  
-    echo "<td align='left' width='50%'>" . $row['model'] . "</td>";
-    echo "<td align='left' width='10%'>" . $row['revision'] . "</td>";
+    echo "<td align='center' width='10%'>" . $row['recnumber'] . "</td>";  
+    echo "<td align='center' width='10%'>" . $row['model'] . "</td>";
+    echo "<td align='center' width='5%'>" . $row['line'] . "</td>";
+    echo "<td align='left' width='20%'>" . $row['Purchasingorder'] . "</td>";
+    echo "<td align='left' width='20%'>" . $row['Work_Order'] . "</td>";
+    echo "<td align='left' width='20%'>" . $row['BOM_File'] . "</td>";
+    echo "<td align='left' width='10%'>" . $row['Start_PCB'] . "</td>";
+    echo "<td align='left' width='10%'>" . $row['End_PCB'] . "</td>";
+    echo "<td align='center' width='8%'>" . $row['Qty'] . "</td>";
+    echo "<td align='left' width='10%'>" . $row['operator'] . "</td>";
+    echo "<td align='left' width='10%'>" . $row['date'] . "</td>";
 
     echo "</tr>";
     }
     
-    if (isset($_POST['submit'])) {
+    if ((isset($_POST['submit'])) and ($_POST['record'] != "")) {
         $rec_number = $_POST['record'];
         $con=mysql_connect($db_host,$db_username,$db_password) or die(mysql_error());
         mysql_select_db("$db_name") or die(mysql_error());
         
-        $sql = "DELETE FROM `PCB_Model` WHERE `recnumber` = '$rec_number'";
+        $sql = "DELETE FROM  `Contract_Manufacturer_Work_Order` WHERE `recnumber` = '$rec_number'";
         $result=mysql_query($sql, $con) or die(mysql_error());
         
         mysql_close($con);
@@ -92,7 +109,8 @@ Warning: This page is only to allow Ampro Management to access.<br>
 Logged in as: <?= $fgmembersite->UserFullName() ?>
 </p>
 <p>
-<a href='Ampro_model_menu.php'>Back to Edit Model Name List Main Page</a>
+<p><a href='login-home.php'>Back</a></p>
+<p><a href='logout.php'>Logout</a></p>
 </p>
 <p>&nbsp;</p>
 <!--<p style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: left;"><a href='Ampro_model_menu.php'>Back to Edit Model Name List Main Page</a></p>-->
