@@ -76,7 +76,8 @@ if ($_POST) {
     echo "<table width='1000' border='5'; style='border-collapse: collapse;border-color: silver;'>";  
     echo "<tr style='font-weight: bold;'>";  
     echo "<td width='10%' align='center'>Rec</td>";
-    echo "<td width='10%' align='center'>Model</td>";  
+    echo "<td width='10%' align='center'>Model</td>";
+    echo "<td width='10%' align='center'>Rev</td>";  
     echo "<td width='10%' align='center'>Line</td>";
     echo "<td width='10%' align='center'>PO</td>";
     echo "<td width='10%' align='center'>WO</td>";
@@ -96,6 +97,7 @@ if ($_POST) {
         echo "<tr>";  
         echo "<td align='center' width='10%'>" . $row['recnumber'] . "</td>";  
         echo "<td align='center' width='10%'>" . $row['model'] . "</td>";
+        echo "<td align='center' width='10%'>" . $row['revision'] . "</td>";
         echo "<td align='center' width='5%'>" . $row['line'] . "</td>";
         echo "<td align='left' width='20%'>" . $row['Purchasingorder'] . "</td>";
         echo "<td align='left' width='20%'>" . $row['Work_Order'] . "</td>";
