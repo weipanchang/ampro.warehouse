@@ -21,23 +21,11 @@ if(!$fgmembersite->CheckLogin())
 <?php
    // define variables and set to empty values
    $operator = "";
-   $model = "";
+   //$model = "";
    $comment = "";
-   $operatorerror = "Your name is missing";
    $modelerror = "";
    $error=0;
-   
-   //if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   //   if (empty($_POST["operator"])) {
-   //     $barcodeerror = "Name is required";
-   //     $error=1;
-   //   }
-   //   else {
-   //     $barcode = test_input($_POST["operator"]);
-   //     $error=0;
-   //   }
-   //}
-   
+  
    function test_input($data) {
       $data = trim($data);
       $data = stripslashes($data);
@@ -73,16 +61,23 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
        echo "<option value='" . $row['model'] ."'>" . $row['model'] ."</option>";
     }
     echo "</select>";
+    echo "<br>";
 ?>
+      
     <input type="submit" name="submit3" style="color: #FF0000; font-size: larger;" value="Select the Model and Click here">
-        
+
 <?php
+
     if ((isset($_POST['submit3'])) and (isset($_POST['model']))) {
+        //unset($_POST['submit3']);
+        //unset($_POST['revision']);
 ?>            
 
 <form name="myform4" method="POST" action="">
 <?php                
         $model = $_POST['model'];
+        echo "<h3 style='color:blue';>"."You Selected ".$model."</h3>";
+        echo "<br>";
         $sql = "SELECT `revision` FROM `PCB_Model` where `model` = '$model' order by revision";
         $result=mysql_query($sql);
         echo "<select name='revision' size=8>";
@@ -90,8 +85,10 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
             echo "<option value='" . $row['revision'] ."'>" . $row['revision'] ."</option>";
         }
         echo "</select>";
+        echo "<br>";
 ?>
         <input type="hidden" name="model" value="<?php echo  $model;?>">
+<!--        <input type="hidden" name="revision" value="<?php echo  $row['revision'];?>">-->
         <input type="submit" name="submit4" style="color: #FF0000; font-size: larger;" value="Select the Revsion and Click here">
 <?php
     }
@@ -100,15 +97,30 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
 </div>
 </form> 
 <?php
-    if ((isset($_POST['submit4'])) and (isset($_POST['model']))) {
+    if ((isset($_POST['submit4'])) and (isset($_POST['revision']))) {
+        $model = $_POST['model'];
+        $revision = $_POST['revision'];
+        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"; 
+        echo "<h3 style='color:blue';>".$model;
+        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+        echo "R";
+        echo "&nbsp";
+        echo $revision;
+        echo "</h3>";
+        //$sql = "SELECT * from `PCB_Model where `model` = '$model' and `revision` = '$revision'";
+        //$result=mysql_query($sql);
+        //$rowcount=mysql_num_rows($result);
+        //if ($rowcount != 0) {
+        //    echo "Enter here";
+        //    unset($_POST['submit4']);
+        //    unset($_POST['submit3']);
+        //    header('Location: WOE.php');
+        //}
 ?>    
 <form name="myform5" method="POST" action="">
 
-<?php
-        $model = $_POST['model']." R".$_POST['revision'];
-        echo $model;
-?>
         <input type="hidden" name="model" value="<?php echo  $model;?>">
+        <input type="hidden" name="revision" value="<?php echo  $revision;?>">
         <table>
         <tr>
         <td>
@@ -173,9 +185,10 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
 <?php
     }
     if (isset($_POST['btnInsert'])) {
-        if (($_POST['model'] !="") and ($_POST['LineNo'] !="") and ($_POST['PO'] !="") and ($_POST['WorkOrder'] !="")
+        if (($_POST['model'] !="") and ($_POST['revision'] !="") and ($_POST['LineNo'] !="") and ($_POST['PO'] !="") and ($_POST['WorkOrder'] !="")
             and ($_POST['BOM'] !="") and($_POST['Qty'] !="") and ($_POST['StartSN'] !="") and ($_POST['EndSN'] !="")) {
             $model = $_POST['model'];
+            $revision = $_POST['revision'];
             $LineNo = $_POST['LineNo'];
             $PO = $_POST['PO'];
             $WorkOrder = $_POST['WorkOrder'];
@@ -189,6 +202,8 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
             '$BOM', '$StartSN', '$EndSn', '$operator', '$Qty')";
             $result=mysql_query($sql, $con);
             echo "New Record Added:---- ";
+            unset ($_POST['submit4']);
+            header('Location: WOE.php');
         }
         else {
             echo "All Field is needed, Enter Again!";
