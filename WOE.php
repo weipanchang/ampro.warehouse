@@ -117,7 +117,7 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
 ?>    
 <form name="myform5" method="POST" action="">
 
-           </form> <input type="hidden" name="model" value="<?php echo  $model;?>">
+        <input type="hidden" name="model" value="<?php echo  $model;?>">
         <input type="hidden" name="revision" value="<?php echo  $revision;?>">
         <table>
         <tr>
@@ -178,7 +178,7 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
         </tr>
         <tr><td> <input type="submit" name="btnInsert" style="color: #FF0000; font-size: larger;" value="Insert"></td></tr>
         </table>
-   
+</form> 
 <?php
     }
     if (isset($_POST['btnInsert'])) {
