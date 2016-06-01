@@ -119,65 +119,19 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
 
         <input type="hidden" name="model" value="<?php echo  $model;?>">
         <input type="hidden" name="revision" value="<?php echo  $revision;?>">
-        <table>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>Line No :</h5>
-        </td>
-        <td>
-        <input type="text" name="LineNo" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>PO :</h5>
-        </td>
-        <td>
-        <input type="text" name="PO" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>WorkOrder :</h5>
-        </td>
-        <td>
-        <input type="text" name="WorkOrder" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>BOM File :</h5>
-        </td>
-        <td>
-        <input type="text" name="BOM" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>Quality :<h5>
-        </td>
-        <td>
-        <input type="text" name="Qty" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>StartSN :<h5>
-        </td>
-        <td>
-        <input type="text" name="StartSN" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h5 style="text-align:center; color:blue;";>EndSN :<h5>
-        </td>
-        <td>
-        <input type="text" name="EndSN" style="color: #FF0000;">
-        </td>
-        </tr>
-        <tr><td> <input type="submit" name="btnInsert" style="color: #FF0000; font-size: larger;" value="Insert"></td></tr>
-        </table>
+   <div style="text-align:left;"> 
+        <ul>
+        <p><pre><h2 style="text-align:left; color:blue;";>Line NO:               <input type="text" name="LineNo" style="color: #FF0000;">          PO :        <input type="text" name="PO" style="color: #FF0000;"></h2>        </pre>
+        <pre><h2 style="text-align:left; color:blue;";>WorkOrder :            <input type="text" name="WorkOrder" style="color: #FF0000;">          BOM File :  <input type="text" name="BOM" style="color: #FF0000;"></h2>        </pre>
+        <pre><h2 style="text-align:left; color:blue;";>Quality :              <input type="text" name="Qty" style="color: #FF0000;">   </h2>                               </pre>
+        <pre><h2 style="text-align:left; color:blue;";>StartSN :              <input type="text" name="StartSN" style="color: #FF0000;">          EndSN :     <input type="text" name="EndSN" style="color: #FF0000;"></h2>        </pre></p>
+
+        </ul>
+
+    </div>
+
+         <input type="submit" name="btnInsert" style="color: #FF0000; font-size: larger;" value="Insert">
+
 </form> 
 <?php
     }
@@ -237,16 +191,24 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
                 
                 echo "</tr>";
                         echo "New Record Added:---- ";
+                        unset ($_POST['submit3']);
                         unset ($_POST['submit4']);
-                        //header('Location: WOE.php');
+                        unset ($_POST['btnInsert']);
+                if (headers_sent()) {
+                    die("Please click on this link: <a href='WOE.php'>Refreash Page</a>");
+                }
+                else{
+                    exit(header("Location: /WOE.php"));
+                }
             }
         }
         else {
-            echo "<h3 style='color:red';>"."Quality input should be numerical and All Field is needed, --- Re-Enter Please!"."</h3>";
+            echo "<h3 style='color:red';>"."Quality input should be numerical and All Fields are needed, --- Re-Enter Please!"."</h3>";
         }
         mysql_close($con);
     } 
 ?>
+
 <p><a href='WOE.php'>Refreash Page</a></p>
 <p><a href='login-home.php'>Back</a></p>
 <p><a href='logout.php'>Logout</a></p>
