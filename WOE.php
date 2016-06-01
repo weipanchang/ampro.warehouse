@@ -64,7 +64,7 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
     echo "<br>";
 ?>
       
-    <input type="submit" name="submit3" style="color: #FF0000; font-size: larger;" value="Select the Model and Click here">
+    <input type="submit" name="submit3" style="color: #FF0000;  " value="Select the Model and Click here">
 
 <?php
 
@@ -87,7 +87,7 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
 ?>
         <input type="hidden" name="model" value="<?php echo  $model;?>">
 <!--        <input type="hidden" name="revision" value="<?php echo  $row['revision'];?>">-->
-        <input type="submit" name="submit4" style="color: #FF0000; font-size: larger;" value="Select the Revsion and Click here">
+        <input type="submit" name="submit4" style="color: #FF0000;  " value="Select the Revsion and Click here">
 <?php
     }
 ?>
@@ -122,58 +122,58 @@ Welcome back <?= $fgmembersite->UserFullName(); ?>!
         <table>
         <tr>
         <td>
-        <h3 style="text-align:center; color:blue;";>Line No :</h3>
+        <h5 style="text-align:center; color:blue;";>Line No :</h5>
         </td>
         <td>
-        <input type="text" name="LineNo" style="color: #FF0000; font-size: larger;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h3 style="text-align:center; color:blue;";>PO :</h3>
-        </td>
-        <td>
-        <input type="text" name="PO" style="color: #FF0000; font-size: larger;">
+        <input type="text" name="LineNo" style="color: #FF0000;">
         </td>
         </tr>
         <tr>
         <td>
-        <h3 style="text-align:center; color:blue;";>WorkOrder :</h3>
+        <h5 style="text-align:center; color:blue;";>PO :</h5>
         </td>
         <td>
-        <input type="text" name="WorkOrder" style="color: #FF0000; font-size: larger;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h3 style="text-align:center; color:blue;";>BOM File :</h3>
-        </td>
-        <td>
-        <input type="text" name="BOM" style="color: #FF0000; font-size: larger;">
+        <input type="text" name="PO" style="color: #FF0000;">
         </td>
         </tr>
         <tr>
         <td>
-        <h3 style="text-align:center; color:blue;";>Quality :<h3>
+        <h5 style="text-align:center; color:blue;";>WorkOrder :</h5>
         </td>
         <td>
-        <input type="text" name="Qty" style="color: #FF0000; font-size: larger;">
-        </td>
-        </tr>
-        <tr>
-        <td>
-        <h3 style="text-align:center; color:blue;";>StartSN :<h3>
-        </td>
-        <td>
-        <input type="text" name="StartSN" style="color: #FF0000; font-size: larger;">
+        <input type="text" name="WorkOrder" style="color: #FF0000;">
         </td>
         </tr>
         <tr>
         <td>
-        <h3 style="text-align:center; color:blue;";>EndSN :<h3>
+        <h5 style="text-align:center; color:blue;";>BOM File :</h5>
         </td>
         <td>
-        <input type="text" name="EndSN" style="color: #FF0000; font-size: larger;">
+        <input type="text" name="BOM" style="color: #FF0000;">
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <h5 style="text-align:center; color:blue;";>Quality :<h5>
+        </td>
+        <td>
+        <input type="text" name="Qty" style="color: #FF0000;">
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <h5 style="text-align:center; color:blue;";>StartSN :<h5>
+        </td>
+        <td>
+        <input type="text" name="StartSN" style="color: #FF0000;">
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <h5 style="text-align:center; color:blue;";>EndSN :<h5>
+        </td>
+        <td>
+        <input type="text" name="EndSN" style="color: #FF0000;">
         </td>
         </tr>
         <tr><td> <input type="submit" name="btnInsert" style="color: #FF0000; font-size: larger;" value="Insert"></td></tr>
